@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.myrealtrip.newsreader.model.Item" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.DetailActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:background="#FAFAFA"
+            android:elevation="1dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- 제목 -->
+            <TextView
+                android:id="@+id/text_view_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:text="@{item.title}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="총선 대진표 확정...비례투표용지 50cm 육박..."/>
+
+            <!-- First Keyword -->
+            <TextView
+                android:id="@+id/text_view_first_keyword"
+                style="@style/keywordStyle"
+                bindKeyword="@{item.firstKeyword}"
+                android:layout_marginStart="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_title"
+                tools:text="갤럭시S20"/>
+
+            <!-- Second Keyword -->
+            <TextView
+                android:id="@+id/text_view_second_keyword"
+                style="@style/keywordStyle"
+                bindKeyword="@{item.secondKeyword}"
+                android:layout_marginStart="5dp"
+                app:layout_constraintLeft_toRightOf="@id/text_view_first_keyword"
+                app:layout_constraintTop_toBottomOf="@id/text_view_title"
+                tools:text="모델로"/>
+
+            <!-- 3th Keyword -->
+            <TextView
+                android:id="@+id/text_view_third_keyword"
+                style="@style/keywordStyle"
+                bindKeyword="@{item.thirdKeyword}"
+                android:layout_marginStart="5dp"
+                app:layout_constraintLeft_toRightOf="@id/text_view_second_keyword"
+                app:layout_constraintTop_toBottomOf="@id/text_view_title"
+                tools:text="카메라"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="4dp"
+            android:translationZ="10dp"
+            app:layout_constraintTop_toTopOf="@id/web_view"
+            app:layout_constraintLeft_toLeftOf="@id/web_view"
+            app:layout_constraintRight_toRightOf="@id/web_view" />
+
+        <WebView
+            android:id="@+id/web_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/layout_top"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.myrealtrip.newsreader.model.Item" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
+
+        <!-- Thumnail Image -->
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/stroke_with_border"
+            android:contentDescription="@string/image_empty"
+            bindUrl="@{item.url}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@drawable/ic_launcher_background"/>
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/text_view_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:text="@{item.title}"
+            app:layout_constraintLeft_toRightOf="@id/image_view"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="갤럭시S 신제품은 ‘갤럭시S20’…실물 사진 유출 - 서울경제 - 서울경제신문"/>
+
+        <!-- Content -->
+        <TextView
+            android:id="@+id/text_view_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:text="@{item.content}"
+            app:layout_constraintLeft_toRightOf="@id/image_view"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_title"
+            tools:text="삼성전자가 다음 달 공개할 예정인 차기 갤럭시 S시리즈 중 한 모델로 추정되는 사진(사진)이 유출됐다.\n해외 개발자 커뮤니티 XDA디벨로퍼는 ‘갤럭시S20플러스’의 실물 사진을 입수했다며 12일(현지시간) 공개했다.\n\n사진 시작 화면에는 ‘갤럭시S20 플러스 5G’라는 문구가 떠 갤럭시S 차기작 이름이 ‘갤럭시S11’이 아닌 ‘갤럭시S20’임을 보여준다. 또 갤럭시S20 플러스가 전면 상단 카메라 구멍을 남겨놓고 전체를 디스플레이로 채운 ‘홀 디스플레이’와 후면에 4개의 카메라를 탑재한 직사각형 모양의 카메라 모듈을 채택한 것을 볼 수 있다."/>
+
+        <!-- First Keyword -->
+        <TextView
+            android:id="@+id/text_view_first_keyword"
+            style="@style/keywordStyle"
+            bindKeyword="@{item.firstKeyword}"
+            android:layout_marginStart="10dp"
+            app:layout_constraintLeft_toRightOf="@id/image_view"
+            app:layout_constraintTop_toBottomOf="@id/text_view_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="갤럭시S20"/>
+
+        <!-- Second Keyword -->
+        <TextView
+            android:id="@+id/text_view_second_keyword"
+            style="@style/keywordStyle"
+            bindKeyword="@{item.secondKeyword}"
+            android:layout_marginStart="5dp"
+            app:layout_constraintLeft_toRightOf="@id/text_view_first_keyword"
+            app:layout_constraintTop_toBottomOf="@id/text_view_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="모델로"/>
+
+        <!-- 3th Keyword -->
+        <TextView
+            android:id="@+id/text_view_third_keyword"
+            style="@style/keywordStyle"
+            bindKeyword="@{item.thirdKeyword}"
+            android:layout_marginStart="5dp"
+            app:layout_constraintLeft_toRightOf="@id/text_view_second_keyword"
+            app:layout_constraintTop_toBottomOf="@id/text_view_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="카메라"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
