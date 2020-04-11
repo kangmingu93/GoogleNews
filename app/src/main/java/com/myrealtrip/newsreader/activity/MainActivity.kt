@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
     override fun onRefresh() {
         adapter.clear()
         loadData()
-        swipe_refresh_layout.isRefreshing = false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -129,6 +128,7 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
                     adapter.addItem(news)
                 }
             }
+            swipe_refresh_layout.isRefreshing = false
         }
     }
 
